@@ -1,15 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-
+import { ApiService } from '../services/api.service';
 import { HttpClient } from '@angular/common/http';
-import { ApiService } from './services/api.service';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
+  selector: 'app-register',
+  templateUrl: './register.component.html',
+  styleUrls: ['./register.component.scss'],
 })
-export class AppComponent implements OnInit {
+export class RegisterComponent implements OnInit {
   data: any = {
     tags: ['cricket', 'football', 'hockey'],
 
@@ -70,7 +69,7 @@ export class AppComponent implements OnInit {
       },
     });
   }
-  title = 'Apurva_Project';
+
   initForm() {
     this.registerForm = this.fb.group({
       profilePhoto: [''],
@@ -91,11 +90,7 @@ export class AppComponent implements OnInit {
 
   handleSubmit() {
     // console.log(this.registerForm.value);
-    this.formData.append(
-      { ...this.registerForm.value },
-      'profilePhoto',
-      this.file
-    );
+    this.formData.append({...this.registerForm.value}, 'profilePhoto', this.file);
     // this.formData.append('firstName', this.registerForm.value.firstName);
     // this.formData.append('lastName', this.registerForm.value.lastName);
     // this.formData.append('email', this.registerForm.value.email);
@@ -103,7 +98,7 @@ export class AppComponent implements OnInit {
     // this.formData.append('state', this.registerForm.value.state);
     // this.formData.append('addressLine1', this.registerForm.value.addressLine1);
     // this.formData.append('addressLine2', this.registerForm.value.addressLine2);
-    console.log(this.formData);
+    console.log(this.formData)
     this.http.post('http://localhost:3000/posts', this.formData).subscribe({
       next: (data) => {
         console.log(data);
@@ -125,5 +120,4 @@ export class AppComponent implements OnInit {
       reader.readAsDataURL(this.file);
     }
   }
-  
 }

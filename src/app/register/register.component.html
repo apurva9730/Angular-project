@@ -1,0 +1,130 @@
+<div class="container">
+  <form class="border p-3 rounded-3">
+    <div class="row g-0">
+      <div class="col text-center p-2 mb-3">
+        <span class="fs-3">Register</span>
+      </div>
+    </div>
+    <div class="row mb-3 mx-auto">
+     <img id="blah" [src]="imageSrc || 'http://placehold.it/180'"
+     alt="your image" style="width: 100px;height: 100px;"
+     />
+    <label class="form-label">Choose Image</label>
+    <input id="uploadImage" type="file" name="myPhoto"  (change)="readURL($event)" />
+    </div>
+    <div class="row mb-3">
+      <div class="col-sm-4">
+        <input
+          type="text"
+          class="form-control"
+          id="name"
+          formControlName="firstName"
+          placeholder="First Name"
+        />
+      </div>
+      <div class="col-sm-4">
+        <input
+          type="text"
+          class="form-control"
+          id="name"
+          formControlName="lastName"
+          placeholder="Last Name"
+        />
+      </div>
+    </div>
+    <div class="row mb-3">
+      <div class="col-sm-8">
+        <input
+          type="email"
+          class="form-control"
+          id="email"
+          formControlName="email"
+          placeholder="Email"
+        />
+      </div>
+    </div>
+    <div class="row mb-3">
+      <div class="col-sm-8 d-flex align-items-center">
+        <label class="form-label me-2">Age:</label>
+       <div class="d-block">
+        <input type="range" class="form-range" min="20" max="60" formControlName="age" id="customRange2">
+        <div class="d-flex">
+        <span>20</span>
+        <span>60</span>
+        </div>
+      </div>
+
+      </div>
+    </div>
+    <div class="row input-group mb-3">
+      <div class="col-sm-8">
+          <select class="form-select">
+            <option selected>State</option>
+            <option  value="state" *ngFor="let state of data.states; let i=index" (change)="selectState($event)">{{state}}</option>
+          </select>
+      </div>
+    </div>
+    <div class="row input-group mb-3">
+      <div class="col-sm-8">
+          <select class="form-select">
+            <option selected >Country</option>
+            <option value="country" *ngFor="let country of data.country; let i=index" (change)="selectState($event)">{{country}}</option>
+          </select>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-8 mb-3">
+        <select class="form-select">
+          <option selected >Address</option>
+          <option>Home</option>
+          <option>Company</option>
+        </select>
+      </div>
+      <div class="col-sm-8 mb-3">
+        <input
+          type="text"
+          class="form-control"
+          id="name"
+          formControlName="addressLine1"
+          placeholder="Address Line 1"
+        />
+      </div>
+      <div class="col-sm-8 mb-3">
+        <input
+        type="text"
+        class="form-control"
+        id="name"
+        formControlName="addressLine2"
+        placeholder="Address Line 2"
+        />
+      </div>
+    </div>
+    <div class="row input-group mb-3">
+      <div class="col-sm-8">
+        <select class="form-select">
+          <option selected >Tags</option>
+          <option value="Tags" *ngFor="let Tags of data.Tags; let i=index">{{Tags}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-2">
+          <button
+            type="submit"
+            class="btn btn-secondary"
+          >
+            Cancel
+        </button>
+      </div>
+      <div class="col-2">
+          <button
+            type="submit"
+            class="btn btn-primary"
+            (click)="handleSubmit()"
+          >
+            Submit
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
